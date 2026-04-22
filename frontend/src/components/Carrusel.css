@@ -1,0 +1,46 @@
+.carrusel-principal .swiper-wrapper {
+    margin-left: 17%;
+}
+
+.carrusel-principal .swiper {
+    padding-bottom: 25px !important;
+    --swiper-navigation-size: 20px; 
+    --swiper-navigation-color: #a0a0a0; 
+    --swiper-pagination-color: var(--color-primario); 
+}
+
+.carrusel-principal .swiper-pagination {
+    bottom: 0px !important;
+}
+
+.carrusel-principal .swiper-button-next:hover,
+.carrusel-principal .swiper-button-prev:hover {
+    color: rgb(221, 220, 220);
+}
+
+.carrusel-principal .swiper-button-next,
+.carrusel-principal .swiper-button-prev {
+    top: 47%; 
+}
+
+.carrusel-principal .swiper-button-next {
+    right: 18.5% !important;
+}
+
+.carrusel-principal .swiper-button-prev {
+    left: 17.5% !important;
+}
+
+.slide-titulo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 10px 20px 10px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 1px;
+}

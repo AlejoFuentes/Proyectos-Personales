@@ -1,0 +1,49 @@
+:root {
+  --color-fondo: #eeeeee;
+  --color-tarjetas: #202020;
+  --color-primario: #286c8b;
+  --color-texto: #000000;
+  --color-texto-mutado: #494949;
+}
+
+body {
+  margin: 0; 
+  padding: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.btn-accion {
+    background-color: var(--color-tarjetas);
+    color: white;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+}
+
+.btn-accion i {
+    color: var(--color-primario);
+    font-size: 1.2rem;
+}
+
+.btn-accion:hover {
+    background-color: #383838;
+    color: white !important;
+}
+
+.input-tg {
+  background-color: var(--color-tarjetas);
+  color: white;
+  width: 80%;
+  height: 45px;
+  border-radius: 6px;
+  border-color: var(--color-primario);
+  font-size: 12px;
+}
+
+.input-tg:focus {
+  border-color: var(--color-primario);
+  caret-color: var(--color-primario);
+  outline: none;
+}
