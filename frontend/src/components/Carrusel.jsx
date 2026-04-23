@@ -1,32 +1,53 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, Grid } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/grid';
 import "./Carrusel.css";
 
-const Carrusel = ({ items = [], elementosPorPagina = 1 }) => {
+const Carrusel = ({ 
+
+  items = [], 
+  elementosPorPagina = 1,
+  ancho, 
+  alto,
+  separacion = 10,  
+  filas = 1,
+  idFlechaPrev,
+  idFlechaNext,
+
+}) => {
   
-  if (items.length === 0) return null; 
+  if (items.length === 0) return null;
 
-  // MAGIA: Si es 1 elemento (banner), altura 450px y separación 30. 
-  // Si son 4 (categorías), altura 300px y separación 20.
-  const esBanner = elementosPorPagina === 1;
-  const alturaImagen = esBanner ? '450px' : '150px';
-  const anchoImagen = esBanner ? '65%' : '150px';
-  const separacion = esBanner ? 600 : 20;
-
+  const usarLoop = filas === 1
+  
   return (
-    <div className="carrusel-principal mb-5"> 
+    <div className="carrusel mb-5"> 
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Navigation, Pagination, Autoplay, Grid]}
         spaceBetween={separacion}
         slidesPerView={elementosPorPagina}
-        centeredSlides={esBanner} // Solo centramos si es el banner gigante
-        navigation
+        grid={filas > 1 ? { rows: filas, fill: "row" } : undefined}
+        
+        navigation={
+          idFlechaPrev && idFlechaNext 
+            ? { prevEl: idFlechaPrev, nextEl: idFlechaNext } 
+            : true
+        }
+        
+        onBeforeInit={(swiper) => {
+          if (idFlechaPrev && idFlechaNext) {
+            swiper.params.navigation.prevEl = idFlechaPrev;
+            swiper.params.navigation.nextEl = idFlechaNext;
+          }
+        }}
+
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop={true}
+        loop={usarLoop}
+        rewind={!usarLoop}
       >
         {items.map((item, index) => (
           <SwiperSlide key={index}>
@@ -34,18 +55,18 @@ const Carrusel = ({ items = [], elementosPorPagina = 1 }) => {
               src={item.imagen} 
               alt={item.textoAlternativo || item.titulo} 
               style={{ 
-                width: anchoImagen,
-                height: alturaImagen, 
+                width: ancho,
+                height: alto, 
                 borderRadius: '25px', 
                 objectFit: 'cover' 
               }} 
             />
-            {/* El texto con degradado */}
             {item.titulo && (
               <div className="slide-titulo">
                 {item.titulo.toUpperCase()}
               </div>
             )}
+            
           </SwiperSlide>
         ))}
       </Swiper>

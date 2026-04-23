@@ -1,5 +1,6 @@
 import TiendaGamer from './components/TiendaGamer.jsx';
 import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <main>
           <TiendaGamer /> 
         </main>
+      <Footer />
     </div>
   );
 }
